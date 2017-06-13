@@ -103,19 +103,21 @@ function topStreams() {
 			console.log(data);
 
 			for (var i = 0; i < data.streams.length; i++) {
-				$("#firstContentRow").append("<div class='col-sm-4 preview'><img src='" + data.streams[i].preview.medium + "'><div class='streamInfo'><p>" + data.streams[i].channel.display_name + " playing " + data.streams[i].channel.game + "</p></div></div>")
+				$("#firstContentRow").append("<div class='col-sm-4 preview'><a href='" + data.streams[i].channel.url + "' target='_blank'><img src='" + data.streams[i].preview.medium + "'><div class='streamInfo'><p>" + data.streams[i].channel.display_name + " playing " + data.streams[i].channel.game + "</p></div></a></div>")
 			}
 		}
 	});
 }
 
 function topVideos() {
+	var date = moment().add(-1, 'days').format("YYYY-MM-DDTHH:mm:ssZ");
 	$.ajax({
 		type: 'GET',
 		url: 'https://www.googleapis.com/youtube/v3/search',
 		data: {
 			key: 'AIzaSyBVy0EAkJ0kLC1HlyZ81wXGvNy9HpQwTqE',
 			chart: 'mostPopular',
+			publishedAfter: date,
 			part: 'snippet',
 			relevanceLanguage: 'en',
 			regionCode: 'US',
@@ -127,7 +129,7 @@ function topVideos() {
 			console.log(data);
 
 			for (var i = 0; i < data.items.length; i++) {
-				$("#secondContentRow").append("<div class='col-sm-4 preview'><img src='" + data.items[i].snippet.thumbnails.medium.url + "'><div class='streamInfo'><p>" + data.items[i].snippet.title + "</p></div></div>")
+				$("#secondContentRow").append("<div class='col-sm-4 preview'><a href='https://www.youtube.com/watch?v=" + data.items[i].id.videoId + "' target='_blank'><img src='" + data.items[i].snippet.thumbnails.medium.url + "'><div class='streamInfo'><p>" + data.items[i].snippet.title + "</p></div></a></div>")
 			}
 		}
 	})
@@ -142,3 +144,6 @@ function pageLoad() {
 }
 
 pageLoad();
+
+var test = moment().add(-1, 'days').format("YYYY-MM-DDTHH:mm:ssZ");
+console.log(test)
