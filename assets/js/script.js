@@ -145,5 +145,9 @@ function pageLoad() {
 
 pageLoad();
 
-var test = moment().add(-1, 'days').format("YYYY-MM-DDTHH:mm:ssZ");
-console.log(test)
+// var xml = "<rss xmlns:media="search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">",
+// xmlDoc = $.parseXML(xml),
+// $xml = $(xmlDoc);
+
+// var title = $xml.find("title");
+// console.log(title)
