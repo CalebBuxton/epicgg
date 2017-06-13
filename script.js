@@ -61,11 +61,11 @@ function youtubeData(value) {
 
 
 function invalid() {
-$('#myModal').modal('show')
+	$('#myModal').modal('show')
 }
 
 function topGames() {
-$.ajax({
+	$.ajax({
 		type: 'GET',
 		url: 'https://api.twitch.tv/kraken/games/top',
 		headers: {
@@ -78,7 +78,7 @@ $.ajax({
 			for (var i = 0; i < data.top.length; i++) {
 				$("#topGames ul").append("<li class='topGame'>" + data.top[i].game.name + "</li>")
 			}
-			}
+		}
 	});
 }
 
@@ -105,14 +105,40 @@ function topStreams() {
 			for (var i = 0; i < data.streams.length; i++) {
 				$("#firstContentRow").append("<div class='col-sm-4 preview'><img src='" + data.streams[i].preview.medium + "'><div class='streamInfo'><p>" + data.streams[i].channel.display_name + " playing " + data.streams[i].channel.game + "</p></div></div>")
 			}
-			}
+		}
 	});
+}
+
+function topVideos() {
+	$.ajax({
+		type: 'GET',
+		url: 'https://www.googleapis.com/youtube/v3/search',
+		data: {
+			key: 'AIzaSyBVy0EAkJ0kLC1HlyZ81wXGvNy9HpQwTqE',
+			chart: 'mostPopular',
+			part: 'snippet',
+			relevanceLanguage: 'en',
+			regionCode: 'US',
+			type: 'video',
+			videoCategoryId: '20',
+			maxResults: 6
+		},
+		success: function(data) {
+			console.log(data);
+
+			for (var i = 0; i < data.items.length; i++) {
+				$("#secondContentRow").append("<div class='col-sm-4 preview'><img src='" + data.items[i].snippet.thumbnails.medium.url + "'><div class='streamInfo'><p>" + data.items[i].snippet.title + "</p></div></div>")
+			}
+		}
+	})
 }
 
 function pageLoad() {
 	$("#firstPanel").text("Current Top Streams");
+	$("#secondPanel").text("Current Top Gaming Videos");
 	topStreams();
 	topGames();
+	topVideos();
 }
 
 pageLoad();

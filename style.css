@@ -10,6 +10,9 @@
 #firstContentRow {
 	text-align: center;
 }
+#secondContentRow {
+	text-align: center;
+}
 
 .preview:nth-child(3n+1){
       clear: left;
