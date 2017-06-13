@@ -63,3 +63,56 @@ function youtubeData(value) {
 function invalid() {
 $('#myModal').modal('show')
 }
+
+function topGames() {
+$.ajax({
+		type: 'GET',
+		url: 'https://api.twitch.tv/kraken/games/top',
+		headers: {
+			'Client-ID': 'rw8ngqk6id3gqkl2r9ugxznh348mds',
+			'Accept': 'application/vnd.twitchtv.v5+json'
+		},
+		success: function(data) {
+			console.log(data);
+
+			for (var i = 0; i < data.top.length; i++) {
+				$("#topGames ul").append("<li class='topGame'>" + data.top[i].game.name + "</li>")
+			}
+			}
+	});
+}
+
+$("#topGames").on("click", ".topGame", function(){
+	var value = $(this).text();
+	console.log(value);
+})
+
+function newSearch(value) {
+
+}
+
+function topStreams() {
+	$.ajax({
+		type: 'GET',
+		url: 'https://api.twitch.tv/kraken/streams/?language=en&limit=12',
+		headers: {
+			'Client-ID': 'rw8ngqk6id3gqkl2r9ugxznh348mds',
+			'Accept': 'application/vnd.twitchtv.v5+json'
+		},
+		success: function(data) {
+			console.log(data);
+
+			for (var i = 0; i < data.streams.length; i++) {
+				$("#firstContentRow").append("<div class='col-sm-4 preview'><img src='" + data.streams[i].preview.medium + "'><div class='streamInfo'><p>" + data.streams[i].channel.display_name + " playing " + data.streams[i].channel.game + "</p></div></div>")
+			}
+			}
+	});
+}
+
+function pageLoad() {
+	$("#firstPanel").text("Current Top Streams");
+	topStreams();
+	topGames();
+}
+
+pageLoad();

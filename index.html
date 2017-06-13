@@ -4,47 +4,49 @@
 
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modalmanager.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
+<div class="container">
+<div class="jumbotron">
+  <h1>Hello, world!</h1>
+  <p>...</p>
+  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+</div>
 
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-		Launch demo modal
-	</button>
+<div class="row">
+	<div class="col-sm-10">
+		<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title" id="firstPanel">Panel title</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row" id="firstContentRow">
+    </div>
+  </div>
+</div>
 
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-				</div>
-				<div class="modal-body">
-					...
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-			</div>
+	</div>
+
+	<div class="col-sm-2">
+		<div>
+				<input type="text" placeholder="Enter Game Here" id="value"></input>
+	<button id="send">Search It</button>
+		</div>
+		<div id="topGames">
+			<h3>Popular Games:</h3>
+			<ul>
+
+			</ul>
 		</div>
 	</div>
 
-	<input type="text" placeholder="Enter Game Here" id="value"></input>
-	<button id="send">Search It</button>
-	<br>
-	<div id="content">
-
 	</div>
-
-	<div id="yt">
-
-	</div>
+</div>
 
 
-
-
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
