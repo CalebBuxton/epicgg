@@ -16,8 +16,8 @@ function validate() {
 }
 
 function newSearch(value) {
-		twitchData(value);
-		youtubeData(value);	
+	twitchData(value);
+	youtubeData(value);	
 }
 
 function twitchData(value) {
@@ -100,7 +100,7 @@ function topGames() {
 function topStreams() {
 	$.ajax({
 		type: 'GET',
-		url: 'https://api.twitch.tv/kraken/streams/?language=en&limit=12',
+		url: 'https://api.twitch.tv/kraken/streams/?language=en&limit=9',
 		headers: {
 			'Client-ID': 'rw8ngqk6id3gqkl2r9ugxznh348mds',
 			'Accept': 'application/vnd.twitchtv.v5+json'
@@ -163,6 +163,42 @@ $("#topGames").on("click", ".topGame", function(){
 	var value = $(this).text();
 	newSearch(value);
 });
+
+$(document).ready(function() {
+	$('#emailButton').hide();
+	$('input').change(function(e) {
+		if ($('#userEmail').val() && validateEmail($('#userEmail').val())) {
+			$('#emailButton').show();
+		}
+	});
+});
+
+
+var config = {
+	apiKey: "AIzaSyDVcwcqgh7-L_pravAUBRptwmr8QVtH0cM",
+	authDomain: "epicgg-65205.firebaseapp.com",
+	databaseURL: "https://epicgg-65205.firebaseio.com",
+	projectId: "epicgg-65205",
+	storageBucket: "epicgg-65205.appspot.com",
+	messagingSenderId: "496054837947"
+};
+firebase.initializeApp(config);
+var database = firebase.database();
+
+$("#emailButton").on("click", function(event){
+	event.preventDefault();
+	var email = $("#userEmail").val().trim()
+
+	$("#userEmail").val("");
+
+	database.ref().push(email);
+	$("#emailButton").hide();
+})
+
+var validateEmail = function(email) {
+	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
+};
 
 pageLoad();
 
