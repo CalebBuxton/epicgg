@@ -4,64 +4,79 @@
 //YouTube API Key
 //AIzaSyBVy0EAkJ0kLC1HlyZ81wXGvNy9HpQwTqE
 
-$("#send").on("click", function(){
-
-
-	$("#content").html("")
-	$("#yt").html("")
+function validate() {
 	var value = $("#value").val().trim();
+	if (value.length < 1) {
+		invalid();
+	}
+	else {
+		newSearch(value);
+		$("#value").val("")
+	}
+}
 
-	twitchData(value);
-	youtubeData(value);
-	$("#value").val("")
-
-})
+function newSearch(value) {
+		twitchData(value);
+		youtubeData(value);	
+}
 
 function twitchData(value) {
 	$.ajax({
 		type: 'GET',
-		url: 'https://api.twitch.tv/kraken/search/streams?query=' + value,
+		url: 'https://api.twitch.tv/kraken/search/streams?query=' + value +'&limit=9',
 		headers: {
 			'Client-ID': 'rw8ngqk6id3gqkl2r9ugxznh348mds',
 			'Accept': 'application/vnd.twitchtv.v5+json'
 		},
 		success: function(data) {
-			for (var i = 0; i < data.streams.length; i++) {
-				$("#content").append("<a href='" + data.streams[i].channel.url + "' target='_blank'><img src='" + data.streams[i].preview.medium + "'></a><br><p>" + data.streams[i].channel.display_name + "</p>")
+			if (data.streams.length < 1 ) {
+				$('#noResults').modal('show')
+			}
+			else {	
+				$("#firstPanel").text("Top Live Streams");
+				$("#firstContentRow").html("");
+				console.log(data);
+				for (var i = 0; i < data.streams.length; i++) {
+					$("#firstContentRow").append("<div class='col-sm-4 preview'><a href='" + data.streams[i].channel.url + "' target='_blank'><img src='" + data.streams[i].preview.medium + "'><div class='streamInfo'><p>" + data.streams[i].channel.status + "</p><p>" + data.streams[i].channel.display_name + " |  <i class='fa fa-user liveViewers'></i> " + data.streams[i].viewers + "</p></div></a></div>")
+
+				}
 			};
+		},
+		error: function() {
+			$('#noResults').modal('show');
 		}
 	});
 }
 
 function youtubeData(value) {
+	var date = moment().add(-2, 'days').format("YYYY-MM-DDTHH:mm:ssZ");
+
 	$.ajax({
 		type: 'GET',
 		url: 'https://www.googleapis.com/youtube/v3/search',
 		data: {
 			key: 'AIzaSyBVy0EAkJ0kLC1HlyZ81wXGvNy9HpQwTqE',
 			q: value,
+			publishedAfter: date,
 			part: 'snippet',
 			relevanceLanguage: 'en',
 			regionCode: 'US',
-			order: 'relevance',
 			type: 'video',
 			videoCategoryId: '20',
-			maxResults: 20
+			maxResults: 6
 		},
 		success: function(data) {
+			$("#secondPanel").text("Recent Videos");
+			$("#secondContentRow").html("");
 			for (var i = 0; i < data.items.length; i++) {
-				console.log(i)
-				$("#yt").append("<img src='" + data.items[i].snippet.thumbnails.medium.url + "'><h1>" + data.items[i].snippet.title + "</h1>")
-			};
+				$("#secondContentRow").append("<div class='col-sm-4 preview'><a href='https://www.youtube.com/watch?v=" + data.items[i].id.videoId + "' target='_blank'><img src='" + data.items[i].snippet.thumbnails.medium.url + "'><div class='streamInfo'><p>" + data.items[i].snippet.title + "</p></div></a></div>")			};
 
-		}
-	})
+			}
+		})
 }
 
-
-
 function invalid() {
-	$('#myModal').modal('show')
+	$('#badSearch').modal('show');
 }
 
 function topGames() {
@@ -80,15 +95,6 @@ function topGames() {
 			}
 		}
 	});
-}
-
-$("#topGames").on("click", ".topGame", function(){
-	var value = $(this).text();
-	console.log(value);
-})
-
-function newSearch(value) {
-
 }
 
 function topStreams() {
@@ -142,6 +148,21 @@ function pageLoad() {
 	topGames();
 	topVideos();
 }
+
+$("input[type='text']").keypress(function(event){
+	if (event.which === 13) {
+		validate();
+	}
+})
+
+$("#send").on("click", function(){
+	validate();
+});
+
+$("#topGames").on("click", ".topGame", function(){
+	var value = $(this).text();
+	newSearch(value);
+});
 
 pageLoad();
 

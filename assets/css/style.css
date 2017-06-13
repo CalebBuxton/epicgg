@@ -5,6 +5,7 @@
 .preview img {
 	height: auto;
 	max-width: 270px;
+	width: 100%;
 }
 
 #firstContentRow {
@@ -20,6 +21,8 @@
 
 #topGames ul li {
 	list-style: none;
+	padding: 5px 0;
+	max-width: 100%;
 }
 
 #topGames ul {
@@ -32,9 +35,33 @@ h3 {
 }
 
 #value {
-	width: 100%;
+	max-width: 80%;
+	display: inline;
+	height: 30px;
+}
+
+#send {
+	display: inline;
+	height: 30px;
 }
 
 .panel-title {
 	text-align: left;
+}
+
+#firstPanel a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.liveViewers {
+	color: red;
+}
+
+#topGames li:hover{
+	cursor: pointer;
+	background: #EEE;
 }

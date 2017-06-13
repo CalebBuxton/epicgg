@@ -7,8 +7,43 @@
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+	<div class="modal fade" id="badSearch" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">No Results</h4>
+      </div>
+      <div class="modal-body">
+        Please check your search criteria and try again.      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+	<div class="modal fade" id="noResults" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">No Results</h4>
+      </div>
+      <div class="modal-body">
+        Your search returned no results, please check your spelling and try again or browse the popular games section.      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <div class="container">
 <div class="jumbotron">
   <h1>EpicGG</h1>
@@ -42,7 +77,8 @@
 	<div class="col-sm-2">
 		<div>
 				<input type="text" placeholder="Enter Game Here" id="value"></input>
-	<button id="send">Search It</button>
+	<button id="send"><i class="fa fa-search"></i>
+</button>
 		</div>
 		<div id="topGames">
 			<h3>Popular Games:</h3>
