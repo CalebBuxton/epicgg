@@ -1,3 +1,48 @@
+body {
+/*	background: #292E37;*/
+background: #505050;
+font-family: 'Roboto';
+}
+
+.panel-default>.panel-heading {
+	padding: 20px 0;
+	background-color: #cc5500;
+}
+
+.panel-title {
+	font-family: 'Roboto';
+	padding-left: 10px;
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: 24px;
+	color: white;
+}
+
+.panel {
+	background: #E0E0E0;
+
+}
+
+.sidePanel {
+	background: #E0E0E0;
+}
+
+.sidePanelHeader {
+	background: #cc5500;
+	padding: 5px 0;
+	color: white;
+}
+
+.sidePanelHeader h3 {
+	margin: 0;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+/*#topGames {
+	padding-left: 5px;
+}*/
+
 .preview {
 	display: inline-block;
 }
@@ -21,12 +66,14 @@
 
 #topGames ul li {
 	list-style: none;
-	padding: 5px 0;
+	padding-top: 5px;
 	max-width: 100%;
+	padding-left: 5px;
 }
 
 #topGames ul {
 	padding: 0;
+	margin: 0;
 }
 
 h3 {
@@ -63,5 +110,37 @@ a:hover {
 
 #topGames li:hover{
 	cursor: pointer;
-	background: #EEE;
+	background: #CC5500;
+	color: white;
+}
+
+.col-sm-2 {
+	background: #E0E0E0;
+	padding: 0;
+	padding-top: 5px;
+	border: 0;
+}
+
+#searchArea {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+#userEmail {
+	width: 100%;
+}
+
+#emailButton {
+	margin: 5px 30%;
+	position: center;
+}
+
+#emailArea {
+	padding: 5px;
+	text-align: center;
+	padding-top: 0;
+}
+
+input {
+	text-align: center;
 }
