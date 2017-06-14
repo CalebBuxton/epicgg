@@ -208,3 +208,12 @@ pageLoad();
 
 // var title = $xml.find("title");
 // console.log(title)
+
+$("#change").on("click", function() {
+	if ($("#styles").attr("href") === "./assets/css/style.css") {
+		$("#styles").attr("href", "./assets/css/style2.css")
+	}
+	else {
+	$("#styles").attr("href", "./assets/css/style.css")
+}
+})
