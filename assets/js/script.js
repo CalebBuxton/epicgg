@@ -209,11 +209,12 @@ pageLoad();
 // var title = $xml.find("title");
 // console.log(title)
 
-$("#change").on("click", function() {
-	if ($("#styles").attr("href") === "./assets/css/style.css") {
-		$("#styles").attr("href", "./assets/css/style2.css")
-	}
-	else {
-	$("#styles").attr("href", "./assets/css/style.css")
-}
+$("#blue").on("click", function() {
+		$("#styles").attr("href", "./assets/css/style2.css");
+})
+$("#orange").on("click", function() {
+		$("#styles").attr("href", "./assets/css/style.css");
+})
+$("#white").on("click", function() {
+		$("#styles").attr("href", " ");
 })

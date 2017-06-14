@@ -132,6 +132,7 @@ a:hover {
 
 #userEmail {
 	width: 100%;
+	margin-top: 5px; 
 }
 
 #emailButton {
@@ -147,4 +148,24 @@ a:hover {
 
 input {
 	text-align: center;
+}
+
+.themeButton {
+	height: 40px;
+	width: 40px;
+	margin: 10px;
+	border: 1px solid black;
+	border-radius: 4px;
+}
+
+#blue {
+	background: #3E6990;
+}
+
+#orange {
+	background: #cc5500;
+}
+
+#white {
+	background: white;
 }
