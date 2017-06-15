@@ -37,7 +37,7 @@ function twitchData(value) {
 				$("#firstContentRow").html("");
 				console.log(data);
 				for (var i = 0; i < data.streams.length; i++) {
-					$("#firstContentRow").append("<div class='col-sm-4 preview'><a href='" + data.streams[i].channel.url + "' target='_blank'><img src='" + data.streams[i].preview.medium + "'><div class='streamInfo'><p>" + data.streams[i].channel.status + "</p><p>" + data.streams[i].channel.display_name + " |  <i class='fa fa-user liveViewers'></i> " + data.streams[i].viewers + "</p></div></a></div>")
+					$("#firstContentRow").append("<div class='col-sm-4 preview'><a href='" + data.streams[i].channel.url + "' target='_blank'><img src='" + data.streams[i].preview.medium + "' class='previewImg'><div class='streamInfo'><p>" + data.streams[i].channel.status + "</p><p>" + data.streams[i].channel.display_name + " |  <i class='fa fa-user liveViewers'></i> " + data.streams[i].viewers + "</p></div></a></div>")
 
 				}
 			};
@@ -208,3 +208,13 @@ pageLoad();
 
 // var title = $xml.find("title");
 // console.log(title)
+
+$("#blue").on("click", function() {
+		$("#styles").attr("href", "./assets/css/style2.css");
+})
+$("#orange").on("click", function() {
+		$("#styles").attr("href", "./assets/css/style.css");
+})
+$("#donny").on("click", function() {
+		$("#styles").attr("href", "./assets/css/donnystyle.css");
+})

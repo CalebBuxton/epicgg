@@ -1,12 +1,12 @@
 body {
 /*	background: #292E37;*/
-background: #505050;
+background: #2F394D;
 font-family: 'Roboto';
 }
 
 .panel-default>.panel-heading {
 	padding: 20px 0;
-	background-color: #cc5500;
+	background-color: #3E6990;
 }
 
 .panel-title {
@@ -32,7 +32,7 @@ font-family: 'Roboto';
 }
 
 .sidePanelHeader {
-	background: #cc5500;
+	background: #3E6990;
 	padding: 5px 0;
 	color: white;
 }
@@ -114,7 +114,7 @@ a:hover {
 
 #topGames li:hover{
 	cursor: pointer;
-	background: #CC5500;
+	background: #3E6990;
 	color: white;
 }
 
