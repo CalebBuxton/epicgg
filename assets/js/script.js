@@ -215,6 +215,6 @@ $("#blue").on("click", function() {
 $("#orange").on("click", function() {
 		$("#styles").attr("href", "./assets/css/style.css");
 })
-$("#white").on("click", function() {
-		$("#styles").attr("href", " ");
+$("#donny").on("click", function() {
+		$("#styles").attr("href", "./assets/css/donnystyle.css");
 })
