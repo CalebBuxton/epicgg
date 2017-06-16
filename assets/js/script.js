@@ -109,7 +109,34 @@ function topStreams() {
 			console.log(data);
 
 			for (var i = 0; i < data.streams.length; i++) {
-				$("#firstContentRow").append("<div class='col-sm-4 preview'><a href='" + data.streams[i].channel.url + "' target='_blank'><img src='" + data.streams[i].preview.medium + "'><div class='streamInfo'><p>" + data.streams[i].channel.display_name + " playing " + data.streams[i].channel.game + "</p><p><i class='fa fa-user liveViewers'></i> " + data.streams[i].viewers + "</p></div></a></div>")
+				$("#firstContentRow").append("<div class='col-sm-4 preview'><a href='" + data.streams[i].channel.url + "' target='_blank' class='preview'><img src='" + data.streams[i].preview.medium + "'></a><div class='streamInfo'><p>" + data.streams[i].channel.display_name + " playing " + data.streams[i].channel.game + "</p><p><i class='fa fa-user liveViewers'></i> " + data.streams[i].viewers + "</p></div></div>")
+				this.imagePreview = function(){ 
+        xOffset = -20;
+        yOffset = 40;       
+        
+    $("a.preview").hover(function(e){
+        this.t = this.title;
+        this.title = "";    
+         var c = (this.t != "") ? "<br/>" + this.t : "";
+         $("body").append("<iframe id='preview'src='http://player.twitch.tv/?channel=drdisrespectlive' height='auto' width='300px' frameborder='0' scrolling='no' allowfullscreen='false'></iframe>");                               
+         $("#preview")
+            .css("top",(e.pageY - xOffset) + "px")
+            .css("left",(e.pageX + yOffset) + "px")
+            .fadeIn("slow");
+    },
+    
+    function(){
+        this.title = this.t;
+        $("#preview").remove();
+
+    }); 
+    
+    $("a.preview").mousemove(function(e){
+        $("#preview")
+            .css("top",(e.pageY - xOffset) + "px")
+            .css("left",(e.pageX + yOffset) + "px");
+    });         
+};
 			}
 		}
 	});
@@ -202,29 +229,58 @@ var validateEmail = function(email) {
 
 pageLoad();
 
-// var xml = "<rss xmlns:media="search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">",
-// xmlDoc = $.parseXML(xml),
-// $xml = $(xmlDoc);
-
-// var title = $xml.find("title");
-// console.log(title)
-
 $("#blue").on("click", function() {
-		$("#styles").attr("href", "./assets/css/style2.css");
+	$("#styles").attr("href", "./assets/css/style2.css");
 })
 $("#orange").on("click", function() {
-		$("#styles").attr("href", "./assets/css/style.css");
+	$("#styles").attr("href", "./assets/css/style.css");
 })
 $("#donny").on("click", function() {
-		$("#styles").attr("href", "./assets/css/donnystyle.css");
+	$("#styles").attr("href", "./assets/css/donnystyle.css");
 })
 
-$("#tester").on("mouseover", function(){
-	$('#streamPreview').modal('show')
-	$('#streamPreviewContent').html('<div class="box"><iframe src="http://player.twitch.tv/?channel=drdisrespectlive" autoplay="false" height="50%" width="100%" frameborder="0" scrolling="no" allowfullscreen="false" muted="true"></iframe></div>')
-})
+// Kick off the jQuery with the document ready function on page load
+$(document).ready(function(){
+    imagePreview();
+});
 
-$("#tester").on("mouseout", function(){
-	$('#streamPreview').modal('hide')
-	$('#streamPreviewContent').html('')
-})
+// Configuration of the x and y offsets
+
+this.imagePreview = function(){ 
+        xOffset = -20;
+        yOffset = 40;       
+        
+    $("a.preview").hover(function(e){
+        this.t = this.title;
+        this.title = "";    
+         var c = (this.t != "") ? "<br/>" + this.t : "";
+         $("body").append("<iframe id='preview'src='http://player.twitch.tv/?channel=drdisrespectlive' height='auto' width='300px' frameborder='0' scrolling='no' allowfullscreen='false'></iframe>");                               
+         $("#preview")
+            .css("top",(e.pageY - xOffset) + "px")
+            .css("left",(e.pageX + yOffset) + "px")
+            .fadeIn("slow");
+    },
+    
+    function(){
+        this.title = this.t;
+        $("#preview").remove();
+
+    }); 
+    
+    $("a.preview").mousemove(function(e){
+        $("#preview")
+            .css("top",(e.pageY - xOffset) + "px")
+            .css("left",(e.pageX + yOffset) + "px");
+    });         
+};
+function generatePreview() {
+    var options = {
+    width: 500,
+    height: 500,
+    channel: "drdisrespectlive",
+  };
+  var player = new Twitch.Player("preview", options);
+  player.setVolume(0);  
+}
+
+$("#test2").hover()

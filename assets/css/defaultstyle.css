@@ -1,0 +1,59 @@
+#preview{
+	position:absolute;
+	border:3px solid #ccc;
+	background:#333;
+	padding:5px;
+	display:none;
+	color:#fff;
+	box-shadow: 4px 4px 3px rgba(103, 115, 130, 1);
+}
+
+img{
+	border:0px;
+	box-shadow: 2px 2px 3px #555562;
+}
+
+#searchArea {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+#userEmail {
+	width: 100%;
+	margin-top: 5px; 
+}
+
+#emailButton {
+	margin: 5px 30%;
+	position: center;
+}
+
+#emailArea {
+	padding: 5px;
+	text-align: center;
+	padding-top: 0;
+}
+
+input {
+	text-align: center;
+}
+
+.themeButton {
+	height: 40px;
+	width: 40px;
+	margin: 10px;
+	border: 1px solid black;
+	border-radius: 4px;
+}
+
+#blue {
+	background: #3E6990;
+}
+
+#orange {
+	background: #cc5500;
+}
+
+#donny {
+	background: white;
+}
