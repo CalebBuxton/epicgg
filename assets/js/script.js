@@ -254,7 +254,7 @@ this.imagePreview = function(){
         this.t = this.title;
         this.title = "";    
          var c = (this.t != "") ? "<br/>" + this.t : "";
-         $("body").append("<iframe id='preview'src='http://player.twitch.tv/?channel=drdisrespectlive' height='auto' width='300px' frameborder='0' scrolling='no' allowfullscreen='false'></iframe>");                               
+         $("body").append("<iframe id='preview'src='https://player.twitch.tv/?channel=drdisrespectlive' height='auto' width='300px' frameborder='0' scrolling='no' allowfullscreen='false'></iframe>");                               
          $("#preview")
             .css("top",(e.pageY - xOffset) + "px")
             .css("left",(e.pageX + yOffset) + "px")
