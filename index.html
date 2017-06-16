@@ -6,6 +6,7 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon" />
@@ -29,7 +30,7 @@
   </div>
 </div>
 
-	<div class="modal fade" id="noResults" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade" id="noResults" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -46,10 +47,22 @@
 </div>
 
 
+	<div class="modal fade" id="streamPreview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" id="streamPreviewContent">
+
+        </div>
+    </div>
+  </div>
+</div>
+
+<a id="tester">HERE</a>
+
 
 <div class="container">
 <div class="jumbotron">
-  <h1>EpicGG</h1>
+  <h1>Epic<span id="h2">GG</span></h1>
   <p>Your Gaming Content Source</p>
 </div>
 

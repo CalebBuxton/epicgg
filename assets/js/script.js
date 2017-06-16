@@ -218,3 +218,13 @@ $("#orange").on("click", function() {
 $("#donny").on("click", function() {
 		$("#styles").attr("href", "./assets/css/donnystyle.css");
 })
+
+$("#tester").on("mouseover", function(){
+	$('#streamPreview').modal('show')
+	$('#streamPreviewContent').html('<div class="box"><iframe src="http://player.twitch.tv/?channel=drdisrespectlive" autoplay="false" height="50%" width="100%" frameborder="0" scrolling="no" allowfullscreen="false" muted="true"></iframe></div>')
+})
+
+$("#tester").on("mouseout", function(){
+	$('#streamPreview').modal('hide')
+	$('#streamPreviewContent').html('')
+})
