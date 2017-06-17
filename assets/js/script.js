@@ -43,7 +43,7 @@ function twitchData(value) {
 				$("#firstContentRow").html("");
 				console.log(data);
 				for (var i = 0; i < data.streams.length; i++) {
-					$("#firstContentRow").append("<div class='col-sm-4 previewGrid'><a href='" + data.streams[i].channel.url + "' target='_blank'><img src='" + data.streams[i].preview.medium + "' class='preview' data-stream-preview='" + data.streams[i].channel.display_name + "''><div class='streamInfo'><p>" + data.streams[i].channel.status + "</p><p>" + data.streams[i].channel.display_name + " |  <i class='fa fa-user liveViewers'></i> " + data.streams[i].viewers + "</p></div></a></div>")
+					$("#firstContentRow").append("<div class='col-sm-4 previewGrid'><a href='" + data.streams[i].channel.url + "' target='_blank'><div class='previewPlaceholder'><img src='" + data.streams[i].preview.medium + "' class='preview' data-stream-preview='" + data.streams[i].channel.display_name + "''></div><div class='streamInfo'><p>" + data.streams[i].channel.status + "</p><p>" + data.streams[i].channel.display_name + " |  <i class='fa fa-user liveViewers'></i> " + data.streams[i].viewers + "</p></div></a></div>")
 
 				}
 			};
@@ -78,7 +78,7 @@ function youtubeData(value) {
 			$("#secondPanel").text("Recent Videos");
 			$("#secondContentRow").html("");
 			for (var i = 0; i < data.items.length; i++) {
-				$("#secondContentRow").append("<div class='col-sm-4 previewGrid'><a href='https://www.youtube.com/watch?v=" + data.items[i].id.videoId + "' target='_blank'><img src='" + data.items[i].snippet.thumbnails.medium.url + "' class='previewYT'><div class='streamInfo'><p>" + data.items[i].snippet.title + "</p></div></a></div>")			};
+				$("#secondContentRow").append("<div class='col-sm-4 previewGridYT'><a href='https://www.youtube.com/watch?v=" + data.items[i].id.videoId + "' target='_blank'><img src='" + data.items[i].snippet.thumbnails.medium.url + "' class='previewYT'><div class='streamInfo'><p>" + data.items[i].snippet.title + "</p></div></a></div>")			};
 
 			}
 		})
@@ -125,10 +125,10 @@ function topStreams() {
 			console.log(data);
 
 			for (var i = 0; i < data.streams.length; i++) {
-				$("#firstContentRow").append("<div class='col-sm-4'><a href='" + data.streams[i].channel.url +
-					"' target='_blank' class=''>"+
+				$("#firstContentRow").append("<div class='col-sm-4 previewGrid'><a href='" + data.streams[i].channel.url +
+					"' target='_blank'><div class='previewPlaceholder'>"+
 					"<img class='preview' src='" + data.streams[i].preview.medium + "' data-stream-preview='"+ data.streams[i].channel.display_name +"'>"+
-					"</a><div class='streamInfo'><p>" +
+					"</div></a><div class='streamInfo'><p>" +
 					data.streams[i].channel.display_name + " playing " + data.streams[i].channel.game + "</p><p><i class='fa fa-user liveViewers'></i> " +
 					data.streams[i].viewers + "</p></div></div>")
 
@@ -159,7 +159,7 @@ function topVideos() {
 			console.log(data);
 
 			for (var i = 0; i < data.items.length; i++) {
-				$("#secondContentRow").append("<div class='col-sm-4 previewGrid'><a href='https://www.youtube.com/watch?v=" + data.items[i].id.videoId + "' target='_blank'><img src='" + data.items[i].snippet.thumbnails.medium.url + "' class='previewYT'><div class='streamInfo'><p>" + data.items[i].snippet.title + "</p></div></a></div>")
+				$("#secondContentRow").append("<div class='col-sm-4 previewGridYT'><a href='https://www.youtube.com/watch?v=" + data.items[i].id.videoId + "' target='_blank'><img src='" + data.items[i].snippet.thumbnails.medium.url + "' class='previewYT'><div class='streamInfo'><p>" + data.items[i].snippet.title + "</p></div></a></div>")
 			}
 		}
 	})
@@ -249,32 +249,46 @@ $("#donny").on("click", function() {
 
 
 //Preview Window
-$(document).on('mouseenter','.preview',(function(e){
-	xOffset = -20;
-	yOffset = 40;
+// $(document).on('mouseenter','.preview',(function(e){
+// 	xOffset = -20;
+// 	yOffset = 40;
 
-	console.log($(this).data("stream-preview"));
+// 	console.log($(this).data("stream-preview"));
 
-	var c = (this.t != "") ? "<br/>" + this.t : "";
-	$("body").append("<iframe id='preview'src='https://player.twitch.tv/?channel="+$(this).data("stream-preview")+
-		"' height='auto' width='300px' frameborder='0' scrolling='no' allowfullscreen='false'></iframe>");
-	$("#preview")
-	.css("top",(e.pageY - xOffset) + "px")
-	.css("left",(e.pageX + yOffset) + "px")
-	.fadeIn("slow");
+// 	$("body").append("<iframe id='preview'src='https://player.twitch.tv/?channel="+$(this).data("stream-preview")+
+// 		"' height='auto' width='300px' frameborder='0' scrolling='no' allowfullscreen='false'></iframe>");
+// 	$("#preview")
+// 	.css("top",(e.pageY - xOffset) + "px")
+// 	.css("left",(e.pageX + yOffset) + "px")
+// 	.fadeIn("slow");
+// }));
+
+// $(document).on('mousemove','.preview',(function(e){
+// 	$("#preview")
+// 	.css("top",(e.pageY - xOffset) + "px")
+// 	.css("left",(e.pageX + yOffset) + "px");
+// }));
+
+// $(document).on('mouseleave','.preview',(function(e){
+// 	$('#preview').remove();
+// }));
+
+//Preview in the same window on mouseover
+$(document).on('mouseenter','.previewGrid',(function(e){
+	var user = $(this).find("img").attr("data-stream-preview");
+	$(this).find("img").addClass("hidden");
+	$(this).find(".previewPlaceholder").append("<iframe id='preview'src='https://player.twitch.tv/?channel="+ user +
+		"' height='auto' width='100%' frameborder='0' scrolling='no' allowfullscreen='false'>" + 
+		"</iframe>")
 }));
-
-$(document).on('mousemove','.preview',(function(e){
-	$("#preview")
-	.css("top",(e.pageY - xOffset) + "px")
-	.css("left",(e.pageX + yOffset) + "px");
-}));
-
-$(document).on('mouseleave','.preview',(function(e){
+$(document).on('mouseleave','.previewGrid',(function(e){
 	$('#preview').remove();
+	$(this).find("img").removeClass("hidden")
 }));
 
 
 
 //Startup
 pageLoad();
+
+

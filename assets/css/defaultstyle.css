@@ -1,11 +1,10 @@
 #preview{
-	position:absolute;
-	border:3px solid #ccc;
-	background:#333;
-	padding:5px;
-	display:none;
+/*	position:absolute;*/
+/*	border:3px solid #ccc;
+*/	background:#333;
+	/*padding:5px;*/
 	color:#fff;
-	box-shadow: 4px 4px 3px rgba(103, 115, 130, 1);
+	box-shadow: 2px 2px 3px #555562;
 }
 
 img{
@@ -67,6 +66,8 @@ input {
 	height: auto;
 	max-width: 270px;
 	width: 100%;
+	border:0px;
+	box-shadow: 2px 2px 3px #555562;
 }
 .previewGrid:nth-child(3n+1){
       clear: left;
@@ -87,4 +88,23 @@ input {
 	height: auto;
 	max-width: 270px;
 	width: 100%;
+}
+
+.hidden {
+	display: none;
+}
+
+.previewPlaceholder {
+	height: auto;
+	max-width: 270px;
+	width: 100%;
+	display: block;
+}
+
+.previewGridYT:nth-child(3n+1){
+      clear: left;
+}
+
+.previewGridYT {
+	display: inline-block;
 }
