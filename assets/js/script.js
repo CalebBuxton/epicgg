@@ -43,7 +43,7 @@ function twitchData(value) {
 				$("#firstContentRow").html("");
 				console.log(data);
 				for (var i = 0; i < data.streams.length; i++) {
-					$("#firstContentRow").append("<div class='col-sm-4 preview'><a href='" + data.streams[i].channel.url + "' target='_blank'><img src='" + data.streams[i].preview.medium + "' class='previewImg'><div class='streamInfo'><p>" + data.streams[i].channel.status + "</p><p>" + data.streams[i].channel.display_name + " |  <i class='fa fa-user liveViewers'></i> " + data.streams[i].viewers + "</p></div></a></div>")
+					$("#firstContentRow").append("<div class='col-sm-4 previewGrid'><a href='" + data.streams[i].channel.url + "' target='_blank'><img src='" + data.streams[i].preview.medium + "' class='previewImg'><div class='streamInfo'><p>" + data.streams[i].channel.status + "</p><p>" + data.streams[i].channel.display_name + " |  <i class='fa fa-user liveViewers'></i> " + data.streams[i].viewers + "</p></div></a></div>")
 
 				}
 			};
@@ -78,7 +78,7 @@ function youtubeData(value) {
 			$("#secondPanel").text("Recent Videos");
 			$("#secondContentRow").html("");
 			for (var i = 0; i < data.items.length; i++) {
-				$("#secondContentRow").append("<div class='col-sm-4 preview'><a href='https://www.youtube.com/watch?v=" + data.items[i].id.videoId + "' target='_blank'><img src='" + data.items[i].snippet.thumbnails.medium.url + "'><div class='streamInfo'><p>" + data.items[i].snippet.title + "</p></div></a></div>")			};
+				$("#secondContentRow").append("<div class='col-sm-4 previewGrid'><a href='https://www.youtube.com/watch?v=" + data.items[i].id.videoId + "' target='_blank'><img src='" + data.items[i].snippet.thumbnails.medium.url + "'><div class='streamInfo'><p>" + data.items[i].snippet.title + "</p></div></a></div>")			};
 
 			}
 		})
@@ -159,7 +159,7 @@ function topVideos() {
 			console.log(data);
 
 			for (var i = 0; i < data.items.length; i++) {
-				$("#secondContentRow").append("<div class='col-sm-4 preview'><a href='https://www.youtube.com/watch?v=" + data.items[i].id.videoId + "' target='_blank'><img src='" + data.items[i].snippet.thumbnails.medium.url + "'><div class='streamInfo'><p>" + data.items[i].snippet.title + "</p></div></a></div>")
+				$("#secondContentRow").append("<div class='col-sm-4 previewGrid'><a href='https://www.youtube.com/watch?v=" + data.items[i].id.videoId + "' target='_blank'><img src='" + data.items[i].snippet.thumbnails.medium.url + "'><div class='streamInfo'><p>" + data.items[i].snippet.title + "</p></div></a></div>")
 			}
 		}
 	})
