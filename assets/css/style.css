@@ -43,15 +43,7 @@ font-family: 'Roboto';
 	text-transform: uppercase;
 }
 
-.previewGrid {
-	display: inline-block;
-}
 
-.preview {
-	height: auto;
-	max-width: 270px;
-	width: 100%;
-}
 
 #firstContentRow {
 	text-align: center;
@@ -60,9 +52,6 @@ font-family: 'Roboto';
 	text-align: center;
 }
 
-.previewGrid:nth-child(3n+1){
-      clear: left;
-}
 
 #topGames ul li {
 	list-style: none;
@@ -81,16 +70,7 @@ h3 {
 	text-align: center;
 }
 
-#value {
-	max-width: 80%;
-	display: inline;
-	height: 30px;
-}
 
-#send {
-	display: inline;
-	height: 30px;
-}
 
 .panel-title {
 	text-align: left;
@@ -121,25 +101,6 @@ a:hover {
 	border: 0;
 }
 
-#searchArea {
-	text-align: center;
-	margin-bottom: 10px;
-}
 
-#userEmail {
-	width: 100%;
-	margin-top: 5px; 
-}
-
-#emailButton {
-	margin: 5px 30%;
-	position: center;
-}
-
-#emailArea {
-	padding: 5px;
-	text-align: center;
-	padding-top: 0;
-}
 
 

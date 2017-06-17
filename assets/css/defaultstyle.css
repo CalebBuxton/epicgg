@@ -57,3 +57,34 @@ input {
 #donny {
 	background: white;
 }
+
+
+.previewGrid {
+	display: inline-block;
+}
+
+.preview {
+	height: auto;
+	max-width: 270px;
+	width: 100%;
+}
+.previewGrid:nth-child(3n+1){
+      clear: left;
+}
+
+#value {
+	max-width: 80%;
+	display: inline;
+	height: 30px;
+}
+
+#send {
+	display: inline;
+	height: 30px;
+}
+
+.previewYT {
+	height: auto;
+	max-width: 270px;
+	width: 100%;
+}

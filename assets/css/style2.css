@@ -44,25 +44,11 @@ font-family: 'Roboto';
 }
 
 
-.previewGrid {
-	display: inline-block;
-}
-
-.preview {
-	height: auto;
-	max-width: 270px;
-	width: 100%;
-}
-
 #firstContentRow {
 	text-align: center;
 }
 #secondContentRow {
 	text-align: center;
-}
-
-.previewGrid:nth-child(3n+1){
-      clear: left;
 }
 
 #topGames ul li {
@@ -80,17 +66,6 @@ font-family: 'Roboto';
 h3 {
 	font-size: 18px;
 	text-align: center;
-}
-
-#value {
-	max-width: 80%;
-	display: inline;
-	height: 30px;
-}
-
-#send {
-	display: inline;
-	height: 30px;
 }
 
 .panel-title {
