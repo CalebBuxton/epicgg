@@ -245,6 +245,9 @@ $("#orange").on("click", function() {
 $("#donny").on("click", function() {
 	$("#styles").attr("href", "./assets/css/donnystyle.css");
 })
+$("#sidStyle").on("click", function() {
+	$("#styles").attr("href", "./assets/css/sidStyle.css");
+})
 
 
 
