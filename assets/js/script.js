@@ -4,6 +4,8 @@
 //YouTube API Key
 //AIzaSyBVy0EAkJ0kLC1HlyZ81wXGvNy9HpQwTqE
 
+
+//Validates user search is not blank, if not sends it to the seach functions.
 function validate() {
 	var value = $("#value").val().trim();
 	if (value.length < 1) {
@@ -15,11 +17,15 @@ function validate() {
 	}
 }
 
+
+//Passes value to search functions
 function newSearch(value) {
 	twitchData(value);
 	youtubeData(value);	
 }
 
+
+//Gets top Twitch streams based on viewers for the user specified search
 function twitchData(value) {
 	$.ajax({
 		type: 'GET',
@@ -48,6 +54,9 @@ function twitchData(value) {
 	});
 }
 
+
+//Gets the top videos from YT using the user input search
+//Results are fron the past two days in the gaming category
 function youtubeData(value) {
 	var date = moment().add(-2, 'days').format("YYYY-MM-DDTHH:mm:ssZ");
 
@@ -75,10 +84,14 @@ function youtubeData(value) {
 		})
 }
 
+
+//No contents in search
 function invalid() {
 	$('#badSearch').modal('show');
 }
 
+
+//Gets the top 10 games from Twitch based on overall views at this time.
 function topGames() {
 	$.ajax({
 		type: 'GET',
@@ -97,6 +110,9 @@ function topGames() {
 	});
 }
 
+
+
+//Gets top streams from Twitch currently based on viewers
 function topStreams() {
 	$.ajax({
 		type: 'GET',
@@ -109,14 +125,20 @@ function topStreams() {
 			console.log(data);
 
 			for (var i = 0; i < data.streams.length; i++) {
-				var name = data.streams[i].channel.display_name;
-				$("#firstContentRow").append("<div class='col-sm-4 preview'><a href='" + data.streams[i].channel.url + "' target='_blank' class='preview'><img src='" + data.streams[i].preview.medium + "'></a><div class='streamInfo'><p>" + data.streams[i].channel.display_name + " playing " + data.streams[i].channel.game + "</p><p><i class='fa fa-user liveViewers'></i> " + data.streams[i].viewers + "</p></div></div>")
-				streamPreview(name);
+				$("#firstContentRow").append("<div class='col-sm-4'><a href='" + data.streams[i].channel.url +
+					"' target='_blank' class=''>"+
+					"<img class='preview' src='" + data.streams[i].preview.medium + "' data-stream-preview='"+ data.streams[i].channel.display_name +"'>"+
+					"</a><div class='streamInfo'><p>" +
+					data.streams[i].channel.display_name + " playing " + data.streams[i].channel.game + "</p><p><i class='fa fa-user liveViewers'></i> " +
+					data.streams[i].viewers + "</p></div></div>")
+
 			}
 		}
-	});
+	})
 }
 
+
+//Gets top videos in gaming category on YT from the past day
 function topVideos() {
 	var date = moment().add(-1, 'days').format("YYYY-MM-DDTHH:mm:ssZ");
 	$.ajax({
@@ -143,6 +165,9 @@ function topVideos() {
 	})
 }
 
+
+
+//startup function
 function pageLoad() {
 	$("#firstPanel").text("Current Top Streams");
 	$("#secondPanel").text("Current Top Gaming Videos");
@@ -151,6 +176,8 @@ function pageLoad() {
 	topVideos();
 }
 
+
+//Sidebar search interations and email input setup
 $("input[type='text']").keypress(function(event){
 	if (event.which === 13) {
 		validate();
@@ -176,6 +203,8 @@ $(document).ready(function() {
 });
 
 
+
+//Firebase Config and Setup
 var config = {
 	apiKey: "AIzaSyDVcwcqgh7-L_pravAUBRptwmr8QVtH0cM",
 	authDomain: "epicgg-65205.firebaseapp.com",
@@ -187,6 +216,8 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
+
+//Email input and button interactions
 $("#emailButton").on("click", function(event){
 	event.preventDefault();
 	var email = $("#userEmail").val().trim()
@@ -202,8 +233,9 @@ var validateEmail = function(email) {
 	return re.test(email);
 };
 
-pageLoad();
 
+
+//Theme Changing buttons
 $("#blue").on("click", function() {
 	$("#styles").attr("href", "./assets/css/style2.css");
 })
@@ -214,57 +246,35 @@ $("#donny").on("click", function() {
 	$("#styles").attr("href", "./assets/css/donnystyle.css");
 })
 
-// Kick off the jQuery with the document ready function on page load
-// $(document).ready(function(){
-//     imagePreview();
-// });
-
-// // Configuration of the x and y offsets
-// this.imagePreview = function(){ 
-//         xOffset = -20;
-//         yOffset = 40;       
-        
-//     $("a.preview").hover(function(e){
-//          $("body").append("<iframe id='preview'src='https://player.twitch.tv/?channel=drdisrespectlive' height='auto' width='300px' frameborder='0' scrolling='no' allowfullscreen='false'></iframe>");                               
-//          $("#preview")
-//             .css("top",(e.pageY - xOffset) + "px")
-//             .css("left",(e.pageX + yOffset) + "px")
-//             .fadeIn("slow");
-//     },
-    
-//     function(){
-//         $("#preview").remove();
-
-//     }); 
-    
-//     $("a.preview").mousemove(function(e){
-//         $("#preview")
-//             .css("top",(e.pageY - xOffset) + "px")
-//             .css("left",(e.pageX + yOffset) + "px");
-//     });         
-// };
 
 
-function streamPreview(name) {
+//Preview Window
+$(document).on('mouseenter','.preview',(function(e){
 	xOffset = -20;
-        yOffset = 40;       
-        
-    $(this).hover(function(e){
-         $("body").append("<iframe id='preview'src='https://player.twitch.tv/?channel=" + name + "' height='auto' width='300px' frameborder='0' scrolling='no' allowfullscreen='false'></iframe>");                               
-         $("#preview")
-            .css("top",(e.pageY - xOffset) + "px")
-            .css("left",(e.pageX + yOffset) + "px")
-            .fadeIn("slow");
-    },
-    
-    function(){
-        $("#preview").remove();
+	yOffset = 40;
 
-    }); 
-    
-    $("a.preview").mousemove(function(e){
-        $("#preview")
-            .css("top",(e.pageY - xOffset) + "px")
-            .css("left",(e.pageX + yOffset) + "px");
-    });         
-}
+	console.log($(this).data("stream-preview"));
+
+	var c = (this.t != "") ? "<br/>" + this.t : "";
+	$("body").append("<iframe id='preview'src='https://player.twitch.tv/?channel="+$(this).data("stream-preview")+
+		"' height='auto' width='300px' frameborder='0' scrolling='no' allowfullscreen='false'></iframe>");
+	$("#preview")
+	.css("top",(e.pageY - xOffset) + "px")
+	.css("left",(e.pageX + yOffset) + "px")
+	.fadeIn("slow");
+}));
+
+$(document).on('mousemove','.preview',(function(e){
+	$("#preview")
+	.css("top",(e.pageY - xOffset) + "px")
+	.css("left",(e.pageX + yOffset) + "px");
+}));
+
+$(document).on('mouseleave','.preview',(function(e){
+	$('#preview').remove();
+}));
+
+
+
+//Startup
+pageLoad();

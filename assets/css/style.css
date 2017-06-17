@@ -43,15 +43,11 @@ font-family: 'Roboto';
 	text-transform: uppercase;
 }
 
-/*#topGames {
-	padding-left: 5px;
-}*/
-
-.preview {
+.previewGrid {
 	display: inline-block;
 }
 
-.preview img {
+.preview {
 	height: auto;
 	max-width: 270px;
 	width: 100%;
@@ -64,7 +60,7 @@ font-family: 'Roboto';
 	text-align: center;
 }
 
-.preview:nth-child(3n+1){
+.previewGrid:nth-child(3n+1){
       clear: left;
 }
 
@@ -146,37 +142,4 @@ a:hover {
 	padding-top: 0;
 }
 
-input {
-	text-align: center;
-}
 
-.themeButton {
-	height: 40px;
-	width: 40px;
-	margin: 10px;
-	border: 1px solid black;
-	border-radius: 4px;
-}
-
-#blue {
-	background: #3E6990;
-}
-
-#orange {
-	background: #cc5500;
-}
-
-#donny {
-	background: white;
-}
-
-.box{
-    display: none;
-    width: 100%;
-}
-
-a:hover + .box,.box:hover{
-    display: block;
-    position: relative;
-    z-index: 100;
-}

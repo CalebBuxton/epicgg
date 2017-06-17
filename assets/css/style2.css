@@ -43,15 +43,12 @@ font-family: 'Roboto';
 	text-transform: uppercase;
 }
 
-/*#topGames {
-	padding-left: 5px;
-}*/
 
-.preview {
+.previewGrid {
 	display: inline-block;
 }
 
-.preview img {
+.preview {
 	height: auto;
 	max-width: 270px;
 	width: 100%;
@@ -64,7 +61,7 @@ font-family: 'Roboto';
 	text-align: center;
 }
 
-.preview:nth-child(3n+1){
+.previewGrid:nth-child(3n+1){
       clear: left;
 }
 
