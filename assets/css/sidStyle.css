@@ -5,15 +5,7 @@ body{
 h3{
   font-family: 'Orbitron', sans-serif;
 }
-#preview{
-	position:absolute;
-	border:3px solid #ccc;
-	background:#333;
-	padding:5px;
-	display:none;
-	color:#fff;
-	box-shadow: 4px 4px 3px rgba(103, 115, 130, 1);
-}
+
 .jumbotron{
   background-color:#24292e;
   color:#ccc;
@@ -46,14 +38,7 @@ h3{
 .panel-heading{
   border-bottom:3px solid skyblue;
 }
-.preview{
-  background-color: #24292e;
-  border:2px solid #fff;
-  max-width: 280px;
-  max-height:200px;
-  margin:10px;
-  margin-left: 10px;
-}
+
 
 #topGames ul li {
 	list-style: none;
