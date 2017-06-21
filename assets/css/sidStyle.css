@@ -4,10 +4,12 @@ body{
 }
 h3{
   font-family: 'Orbitron', sans-serif;
+  background:rgba(0,0,0,0.8);
+  width:100%;
 }
 
 .jumbotron{
-  background-color:#24292e;
+  background-color:rgba(0,0,0,0.9);
   color:#ccc;
   padding-top: 10px;
   margin-top: 20px;
@@ -26,23 +28,45 @@ h3{
 }
 
 .panel-default > .panel-heading {
-	background-color:rgba(0,0,0,0.1);
+	background-color:rgba(0,0,0,0.7);
 	color:#ccc;
   font-family:'Orbitron', sans-serif; 
   border-color: skyblue;
 }
+#firstPanel{
+  font-size: 30px;
+}
+#secondPanel{
+  font-size: 30px;
+}
 .panel{
   border:0px;
-  background: #252831;
+  background: rgba(0,0,0,0.7);
 }
 .panel-heading{
-  border-bottom:3px solid skyblue;
+  border-bottom:4px solid skyblue;
+}
+.col-sm-2{
+  padding:0px;
+  padding-top: 10px;
 }
 
+.sidePanelHeader h3 {
+	text-transform: uppercase;
+  text-align: center;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
 
+#value{
+  border-radius: 100px;
+}
+#send {
+  border-radius: 100px;
+}
 #topGames ul li {
 	list-style: none;
-	padding: 5px 0;
+	padding: 5px;
 	max-width: 100%;
   font-family: 'Orbitron', sans-serif;
 }
@@ -67,11 +91,17 @@ img{
 #searchArea {
 	text-align: center;
 	margin-bottom: 10px;
+  font-weight: bold;
+  margin-top: 10px;
+  color:darkred;
 }
 
 #userEmail {
 	width: 100%;
 	margin-top: 5px; 
+  border-radius: 100px;
+  color:darkred;
+  font-weight: bold;
 }
 
 #emailButton {
@@ -92,7 +122,7 @@ input {
 .themeButton {
 	height: 40px;
 	width: 40px;
-	margin: 10px;
+	margin-left: 5px;
 	border: 1px solid black;
 	border-radius: 4px;
 }
