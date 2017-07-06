@@ -26,7 +26,19 @@ h3{
   font-family: 'Orbitron', sans-serif;
   
 }
-
+.modal-title{
+  color:black;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+}
+.modal-body{
+  color:black;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+}
+.mapboxgl-popup-content{
+  color:black;
+}
 .panel-default > .panel-heading {
 	background-color:rgba(0,0,0,0.7);
 	color:#ccc;
@@ -95,7 +107,11 @@ img{
   margin-top: 10px;
   color:darkred;
 }
-
+#switch{
+  color:#444;
+  border-radius: 100px;
+  font-weight:bold;
+}
 #userEmail {
 	width: 100%;
 	margin-top: 5px; 
