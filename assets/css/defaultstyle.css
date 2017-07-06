@@ -1,8 +1,5 @@
 #preview{
-/*	position:absolute;*/
-/*	border:3px solid #ccc;
-*/	background:#333;
-	/*padding:5px;*/
+	background:#333;
 	color:#fff;
 	box-shadow: 2px 2px 3px #555562;
 	max-height: 180px;
@@ -75,7 +72,7 @@ input {
 	box-shadow: 2px 2px 3px #555562;
 }
 .previewGrid:nth-child(3n+1){
-      clear: left;
+	clear: left;
 }
 
 #value {
@@ -107,9 +104,60 @@ input {
 }
 
 .previewGridYT:nth-child(3n+1){
-      clear: left;
+	clear: left;
 }
 
 .previewGridYT {
 	display: inline-block;
+}
+
+#switch {
+	width: 100%;
+	margin-bottom: 15px;
+
+}
+
+#map { 
+	height:540px;
+	width:100%;
+}
+
+.marker {
+	background-image: url('https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/256/Map-Marker-Flag--Left-Pink.png');
+	background-size: cover;
+	width: 50px;
+	height: 50px;
+
+	cursor: pointer;
+}
+
+.mapboxgl-popup {
+	max-width: 320px;
+	height:auto;
+	font-size:20px;
+}
+.mapInfo{
+	color:#ffffff;
+}
+#calendar {
+	background: linear-gradient(to right, #ffa280, #ff8f66);  
+	height:100%;
+	width:100%;
+}
+#backStreams {
+	color:black;
+}
+
+.panel-body {
+	padding: 0px;
+}
+
+.mapboxgl-canvas {
+	position: relative;
+}
+
+#firstContentRow,
+#secondContentRow {
+	max-width: 100%;
+	margin: 10px 0;
 }
