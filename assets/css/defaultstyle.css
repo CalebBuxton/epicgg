@@ -55,8 +55,13 @@ input {
 #donny {
 	background: white;
 }
+
 #sidStyle {
 	background: darkred;
+}
+
+#notFound {
+	background: green;
 }
 
 
